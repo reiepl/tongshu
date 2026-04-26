@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  /* Reduced padding to give the calendar more room on the screen */
+  padding: 20px;
+  margin: 0;
+}
+
+.calendar-container {
+  width: 100%;
+  background: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: #0f172a;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.calendar-header button {
+  background: #f1f5f9;
+  border: none;
+  color: #475569;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.calendar-header button:hover {
+  background: #e2e8f0;
+}
+
+.weekdays-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #f8fafc;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #64748b;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day-cell,
+.empty-cell {
+  min-height: 100px;
+  border-right: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: background 0.1s;
+}
+
+.day-cell:hover {
+  background-color: #f8fafc;
+}
+
+.day-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.weekend {
+  background-color: #fcfcfc;
+}
+
+.gregorian-date {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.lunar-date {
+  font-size: 0.75rem;
+  text-align: left;
+}
+/* --- NEW METAPHYSICS & HIGHLIGHT STYLES --- */
+
+.header-title {
+  text-align: center;
+}
+
+.header-title h2 {
+  transition: color 0.2s ease;
+}
+
+.header-title h2:hover {
+  color: #3b82f6; /* Turns blue when hovered to show it is clickable */
+}
+
+.header-ganzhi {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.ganzhi-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns the text to the right edge */
+  line-height: 1.2;
+}
+
+.ganzhi-text {
+  font-size: 0.65rem; /* Slightly smaller to fit both lines */
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.today .ganzhi-text {
+  color: #60a5fa; /* Keeps the blue theme for today's highlight */
+}
+
+/* Today Highlight Design */
+.today {
+  background-color: #eff6ff;
+  box-shadow: inset 0 0 0 2px #3b82f6; /* Creates an inner border so it doesn't break the grid layout */
+}
+
+.today .gregorian-date {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.today .daily-ganzhi {
+  color: #60a5fa;
+}
+/* --- TOGGLE SWITCH & MONTH MARKER STYLES --- */
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* Changed from 800px to 100% to allow full-screen stretching */
+  max-width: 100%;
+}
+
+/* --- TOGGLE BAR STYLES --- */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px 15px 10px;
+  justify-content: flex-end;
+}
+
+.toggle-label {
+  margin-left: 10px;
+  font-size: 0.875rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #8b5cf6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* --- HEAVENLY VIRTUE (HV) TAG --- */
+.day-cell {
+  position: relative; /* Essential for bottom-right positioning */
+}
+
+.hv-tag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 1px solid #fee2e2;
+  line-height: 1;
+}
+
+.today .hv-tag {
+  background-color: #ffffff;
+  border-color: #3b82f6;
+  color: #2563eb;
+}
