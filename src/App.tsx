@@ -14,11 +14,6 @@ const App = () => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
-  // Header GanZhi
-  const midMonthSolar = Solar.fromYmd(year, month + 1, 15);
-  const midMonthLunar = midMonthSolar.getLunar();
-  const headerGanZhi = `${midMonthLunar.getYearInGanZhi()}年 ${midMonthLunar.getMonthInGanZhi()}月`;
-
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const goToToday = () => setCurrentDate(new Date());
