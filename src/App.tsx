@@ -19,15 +19,15 @@ const App = () => {
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const goToToday = () => setCurrentDate(new Date());
 
-  // Heavenly Virtue (天德) Logic based on 002.jpg
-  const getHVTarget = (monthZhi) => {
-    const hvMap = {
-      '寅': '丁', '卯': '申', '辰': '壬', '巳': '辛',
-      '午': '亥', '未': '甲', '申': '癸', '酉': '寅',
-      '戌': '丙', '亥': '乙', '子': '巳', '丑': '庚'
-    };
-    return hvMap[monthZhi] || null;
+// Heavenly Virtue (天德) Logic based on 002.jpg
+const getHVTarget = (monthZhi: string) => {
+  const hvMap: Record<string, string> = {
+    '寅': '丁', '卯': '申', '辰': '壬', '巳': '辛',
+    '午': '亥', '未': '甲', '申': '癸', '酉': '寅',
+    '戌': '丙', '亥': '乙', '子': '巳', '丑': '庚'
   };
+  return hvMap[monthZhi] || null;
+};
 
   const renderDays = () => {
     const days = [];
