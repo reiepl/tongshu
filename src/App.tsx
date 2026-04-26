@@ -1,5 +1,6 @@
 //import React, { useState } from 'react';
 import { useState } from 'react';
+// @ts-ignore
 import { Solar } from 'lunar-javascript';
 import './App.css'; 
 
