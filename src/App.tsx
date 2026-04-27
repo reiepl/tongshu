@@ -1,11 +1,12 @@
-//import React, { useState } from 'react';
 import { useState } from 'react';
 // @ts-ignore
 import { Solar } from 'lunar-javascript';
 import './App.css'; 
+import PrivacyPolicy from './PrivacyPolicy'; // Brings in your new component
 
 const App = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [showPrivacy, setShowPrivacy] = useState(false); // Our new state toggle
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -36,7 +37,6 @@ const App = () => {
       const dailyGanZhi = lunar.getDayInGanZhi();
       const monthlyGanZhi = lunar.getMonthInGanZhiExact(); 
       
-      // -- NEW: Fetch the 12 Day Officer --
       const dayOfficer = lunar.getZhiXing(); 
       
       let lunarDisplay = lunar.getDayInChinese();
@@ -72,7 +72,6 @@ const App = () => {
             </div>
           </div>
           
-          {/* NEW: Bottom row container to align Lunar Date and Officer Badge */}
           <div className="date-footer">
             <span 
               className="lunar-date" 
@@ -94,18 +93,23 @@ const App = () => {
     return days;
   };
 
+  // --- CONDITIONAL RENDER: If showPrivacy is true, show the policy page instead of the calendar ---
+  if (showPrivacy) {
+    return (
+      <div className="app-wrapper">
+         <button 
+           onClick={() => setShowPrivacy(false)} 
+           style={{ margin: '20px', padding: '8px 16px', cursor: 'pointer', backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: '6px', color: '#334155' }}
+         >
+           &larr; Back to Calendar
+         </button>
+         <PrivacyPolicy /> 
+      </div>
+    );
+  }
+
+  // --- DEFAULT RENDER: Show the Tong Shu Calendar ---
   return (
-    if (showPrivacy) {
-      return (
-        <div className="app-wrapper">
-           <button onClick={() => setShowPrivacy(false)} style={{ margin: '20px', padding: '8px 16px', cursor: 'pointer' }}>
-             &larr; Back to Calendar
-           </button>
-           {/* Import your new component here */}
-           <PrivacyPolicy /> 
-        </div>
-      )
-    }
     <div className="app-wrapper">
       <div className="calendar-container">
         <header className="calendar-header">
@@ -129,7 +133,6 @@ const App = () => {
         </div>
       </div>
 
-      {/* NEW: SEO and AdSense "Thick Content" Section */}
       <section className="educational-content">
         <div className="content-card">
           <h3>Understanding the Modern Tong Shu</h3>
@@ -142,24 +145,23 @@ const App = () => {
           <h3>The 12 Day Officers (Jian Chu 12 Shen)</h3>
           <p>
             A core feature of this calendar is the plotting of the 12 Day Officers (建除十二神). These officers dictate the specific 
-            actionable energy of a given day. By anchoring the calculation to the exact exact minute the Solar Term transitions, 
+            actionable energy of a given day. By anchoring the calculation to the exact minute the Solar Term transitions, 
             practitioners can accurately identify days for establishing new ventures (建), seeking stability (定), or avoiding hazards (危).
           </p>
         </div>
       </section>
 
-      {/* NEW: Mandatory AdSense Footer */}
-      const [showPrivacy, setShowPrivacy] = useState(false);
       <footer className="app-footer">
         <p>&copy; {new Date().getFullYear()} DailyQi. All rights reserved.</p>
         <div className="footer-links">
           <button 
             onClick={() => setShowPrivacy(true)} 
             className="footer-link" 
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: '0.85rem' }}
           >
             Privacy Policy
           </button>
+          <a href="#" className="footer-link" style={{ fontSize: '0.85rem' }}>Terms of Service</a>
         </div>
       </footer>
 
