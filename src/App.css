@@ -299,3 +299,61 @@ input:checked + .slider:before {
   color: #1e40af;
   border-color: #bfdbfe;
 }
+
+/* --- EDUCATIONAL CONTENT & SEO --- */
+.educational-content {
+  max-width: 800px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+.content-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.content-card h3 {
+  color: #1e293b;
+  margin-bottom: 12px;
+  margin-top: 24px;
+  font-size: 1.25rem;
+}
+
+.content-card h3:first-child {
+  margin-top: 0;
+}
+
+.content-card p {
+  color: #475569;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* --- FOOTER --- */
+.app-footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #64748b;
+  font-size: 0.85rem;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 40px;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-link {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}

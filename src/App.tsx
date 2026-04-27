@@ -117,6 +117,35 @@ const App = () => {
           {renderDays()}
         </div>
       </div>
+
+      {/* NEW: SEO and AdSense "Thick Content" Section */}
+      <section className="educational-content">
+        <div className="content-card">
+          <h3>Understanding the Modern Tong Shu</h3>
+          <p>
+            The Tong Shu (Chinese Almanac) is an ancient metaphysical tool used to calculate the energy of time. 
+            By mapping the precise transitions of the 24 Solar Terms (Jie Qi), this daily calendar calculates the exact 
+            Heavenly Stems and Earthly Branches governing each day, month, and year.
+          </p>
+          
+          <h3>The 12 Day Officers (Jian Chu 12 Shen)</h3>
+          <p>
+            A core feature of this calendar is the plotting of the 12 Day Officers (建除十二神). These officers dictate the specific 
+            actionable energy of a given day. By anchoring the calculation to the exact exact minute the Solar Term transitions, 
+            practitioners can accurately identify days for establishing new ventures (建), seeking stability (定), or avoiding hazards (危).
+          </p>
+        </div>
+      </section>
+
+      {/* NEW: Mandatory AdSense Footer */}
+      <footer className="app-footer">
+        <p>&copy; {new Date().getFullYear()} DailyQi. All rights reserved.</p>
+        <div className="footer-links">
+          <a href="#" className="footer-link">Privacy Policy</a>
+          <a href="#" className="footer-link">Terms of Service</a>
+        </div>
+      </footer>
+
     </div>
   );
 };
