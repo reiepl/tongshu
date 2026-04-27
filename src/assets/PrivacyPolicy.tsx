@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
         <h3>3. Google AdSense and Cookies</h3>
         <p>
           We use Google AdSense to display advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site.
-        </p>
+        </p> 
         <ul style={{ color: '#475569', lineHeight: '1.6', marginBottom: '16px', paddingLeft: '20px' }}>
           <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to our website or other websites.</li>
           <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.</li>
