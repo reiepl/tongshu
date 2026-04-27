@@ -95,6 +95,17 @@ const App = () => {
   };
 
   return (
+    if (showPrivacy) {
+      return (
+        <div className="app-wrapper">
+           <button onClick={() => setShowPrivacy(false)} style={{ margin: '20px', padding: '8px 16px', cursor: 'pointer' }}>
+             &larr; Back to Calendar
+           </button>
+           {/* Import your new component here */}
+           <PrivacyPolicy /> 
+        </div>
+      )
+    }
     <div className="app-wrapper">
       <div className="calendar-container">
         <header className="calendar-header">
@@ -138,11 +149,17 @@ const App = () => {
       </section>
 
       {/* NEW: Mandatory AdSense Footer */}
+      const [showPrivacy, setShowPrivacy] = useState(false);
       <footer className="app-footer">
         <p>&copy; {new Date().getFullYear()} DailyQi. All rights reserved.</p>
         <div className="footer-links">
-          <a href="#" className="footer-link">Privacy Policy</a>
-          <a href="#" className="footer-link">Terms of Service</a>
+          <button 
+            onClick={() => setShowPrivacy(true)} 
+            className="footer-link" 
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          >
+            Privacy Policy
+          </button>
         </div>
       </footer>
 
